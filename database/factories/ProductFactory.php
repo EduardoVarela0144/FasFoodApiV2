@@ -129,7 +129,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->randomElement($foodProductNames),
             'price' => fake()->randomFloat(2, 1, 100),
             'quantity' => fake()->numberBetween(1, 100),
-            'image' => 'https://source.unsplash.com/random/400x300/?profile',
+            'image' => 'https://source.unsplash.com/random/400x300/?food',
             'description' => fake()->text(),
             'seller' => fake()->numberBetween(1, 100),
         ];

@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'password' => static::$password ??= Hash::make('password'),
             'registrationNumber' => fake()->unique()->numerify('##########'),
             'accountNumber' => fake()->unique()->numerify('##########'),
-            'profilePicture' => 'https://source.unsplash.com/random/400x300/?food',
+            'profilePicture' => 'https://source.unsplash.com/random/400x300/?profile',
             'major' => $this->faker->randomElement([
                 'Ingeniería Informática',
                 'Ingeniería de Software',

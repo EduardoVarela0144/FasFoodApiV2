@@ -21,7 +21,7 @@ class ImageController extends Controller
         $image->downloadUrl = '/images/'.$imageName; 
         $image->save();
 
-        return response()->json(['message' => 'Imagen subida correctamente']);
+        return response()->json($image, 201);
     }
 
 }

@@ -31,7 +31,7 @@ Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-Route::post('/login', [UserController::class, 'login'])->name('login');
+Route::post('/users/login', [UserController::class, 'login'])->name('login');
 
 Route::post('/images', [ImageController::class, 'store'])->name('images.store');
 
