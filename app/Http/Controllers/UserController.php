@@ -42,15 +42,19 @@ class UserController extends Controller
             'building' => 'nullable|string',
             'rol' => 'required|string',
         ]);
-
+    
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
-
-        $user = User::create($validator->validated());
-
+    
+        $data = $validator->validated();
+        $data['password'] = bcrypt($data['password']);
+    
+        $user = User::create($data);
+    
         return response()->json(['message' => 'Usuario creado exitosamente', 'user' => $user]);
     }
+    
 
     public function update(Request $request, $id)
     {
