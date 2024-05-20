@@ -36,7 +36,6 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string',
             'registrationNumber' => 'required|string|unique:users,registrationNumber',
-            'accountNumber' => 'required|string|unique:users,accountNumber',
             'profilePicture' => 'nullable|string',
             'major' => 'nullable|string',
             'building' => 'nullable|string',
