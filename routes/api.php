@@ -7,6 +7,8 @@ use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ImageController;
+
 
 
 Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
@@ -30,6 +32,9 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 Route::post('/login', [UserController::class, 'login'])->name('login');
+
+Route::post('/images', [ImageController::class, 'store'])->name('images.store');
+
 
 
 
