@@ -4,18 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Models\Food;
+use App\Models\Product;
 
-class FoodController extends Controller
+class ProductController extends Controller
 {
     
     public function index()
     {
-        $productos = Food::all();
+        $products = Product::all();
 
         return response()->json([
-            'message' => 'Lista de prodcutos obtenida exitosamente',
-            'productos' => $productos,
+            'message' => 'Lista de productos obtenida exitosamente',
+            'products' => $products,
         ], Response::HTTP_OK);
     }
 
@@ -28,15 +28,15 @@ class FoodController extends Controller
                 'price' => 'required|numeric',
             ]);
 
-            $comida = Food::create($validatedData);
+            $product = Product::create($validatedData);
 
             return response()->json([
-                'message' => 'Comida creada exitosamente',
-                'Comida' => $comida,
+                'message' => 'Producto creado exitosamente',
+                'product' => $product,
             ], Response::HTTP_CREATED);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Error al crear la comida: ' . $e->getMessage(),
+                'message' => 'Error al crear el producto: ' . $e->getMessage(),
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }

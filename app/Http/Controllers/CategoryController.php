@@ -11,11 +11,11 @@ class CategoryController extends Controller
     
     public function index()
     {
-        $categorias = Category::all();
+        $categories = Category::all();
 
         return response()->json([
             'message' => 'Lista de categorias obtenida exitosamente',
-            'categorias' => $categorias,
+            'categories' => $categories,
         ], Response::HTTP_OK);
     }
 
@@ -26,11 +26,11 @@ class CategoryController extends Controller
                 'name' => 'required|string',
             ]);
 
-            $categoria = Category::create($validatedData);
+            $categorie = Category::create($validatedData);
 
             return response()->json([
                 'message' => 'Categoria creada exitosamente',
-                'categoria' => $categoria,
+                'categorie' => $categorie,
             ], Response::HTTP_CREATED);
         } catch (\Exception $e) {
             return response()->json([

@@ -5,16 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Restaurante extends Model
+class Product extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'address',
-        'phone',
-        'type',
-        'description',
+        'price',
+        'quantity',
         'image',
+        'description',
     ];
+
+    public function seller()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

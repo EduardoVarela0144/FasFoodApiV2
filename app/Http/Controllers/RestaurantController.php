@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Restaurante;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class RestauranteController extends Controller
+class RestaurantController extends Controller
 {
     public function index()
     {
-        $restaurantes = Restaurante::all();
+        $restaurants = Restaurant::all();
 
         return response()->json([
             'message' => 'Lista de restaurantes obtenida exitosamente',
-            'restaurantes' => $restaurantes,
+            'restaurants' => $restaurants,
         ], Response::HTTP_OK);
     }
 
     public function show($id)
     {
-        $restaurante = Restaurante::find($id);
+        $restaurant = Restaurant::find($id);
 
-        if (!$restaurante) {
+        if (!$restaurant) {
             return response()->json([
                 'message' => 'Restaurante no encontrado',
             ], Response::HTTP_NOT_FOUND);
@@ -30,7 +30,7 @@ class RestauranteController extends Controller
 
         return response()->json([
             'message' => 'Restaurante obtenido exitosamente',
-            'restaurante' => $restaurante,
+            'restaurant' => $restaurant,
         ], Response::HTTP_OK);
     }
 
@@ -45,11 +45,11 @@ class RestauranteController extends Controller
             'image' => 'required|string',
         ]);
 
-        $restaurante = Restaurante::create($validatedData);
+        $restaurant = Restaurant::create($validatedData);
 
         return response()->json([
             'message' => 'Restaurante creado exitosamente',
-            'restaurante' => $restaurante,
+            'restaurant' => $restaurant,
         ], Response::HTTP_CREATED);
     }
 
@@ -64,33 +64,33 @@ class RestauranteController extends Controller
             'image' => 'required|string',
         ]);
 
-        $restaurante = Restaurante::find($id);
+        $restaurant = Restaurant::find($id);
 
-        if (!$restaurante) {
+        if (!$restaurant) {
             return response()->json([
                 'message' => 'Restaurante no encontrado',
             ], Response::HTTP_NOT_FOUND);
         }
 
-        $restaurante->update($validatedData);
+        $restaurant->update($validatedData);
 
         return response()->json([
             'message' => 'Restaurante actualizado exitosamente',
-            'restaurante' => $restaurante,
+            'restaurant' => $restaurant,
         ], Response::HTTP_OK);
     }
 
     public function destroy($id)
     {
-        $restaurante = Restaurante::find($id);
+        $restaurant = Restaurant::find($id);
 
-        if (!$restaurante) {
+        if (!$restaurant) {
             return response()->json([
                 'message' => 'Restaurante no encontrado',
             ], Response::HTTP_NOT_FOUND);
         }
 
-        $restaurante->delete();
+        $restaurant->delete();
 
         return response()->json([
             'message' => 'Restaurante eliminado exitosamente',

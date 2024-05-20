@@ -3,21 +3,21 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\RestauranteController;
-use App\Http\Controllers\FoodController;
+use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
-Route::get('/restaurantes', [RestauranteController::class, 'index'])->name('restaurantes.index');
-Route::get('/restaurantes/{id}', [RestauranteController::class, 'show'])->name('restaurantes.show');
-Route::post('/restaurantes', [RestauranteController::class, 'store'])->name('restaurantes.store');
-Route::put('/restaurantes/{id}', [RestauranteController::class, 'update'])->name('restaurantes.update');
-Route::delete('/restaurantes/{id}', [RestauranteController::class, 'destroy'])->name('restaurantes.destroy');
+Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
+Route::get('/restaurants/{id}', [RestaurantController::class, 'show'])->name('restaurants.show');
+Route::post('/restaurants', [RestaurantController::class, 'store'])->name('restaurants.store');
+Route::put('/restaurants/{id}', [RestaurantController::class, 'update'])->name('restaurants.update');
+Route::delete('/restaurants/{id}', [RestaurantController::class, 'destroy'])->name('restaurants.destroy');
 
-Route::get('/food', [FoodController::class, 'index'])->name('productos.index');
-Route::post('/food', [FoodController::class, 'store'])->name('productos.store');
+Route::get('/products', [ProductController::class, 'index'])->name('productos.index');
+Route::post('/products', [ProductController::class, 'store'])->name('productos.store');
 
-Route::get('/categorias', [CategoryController::class, 'index'])->name('categorias.index');
-Route::post('/categorias', [CategoryController::class, 'store'])->name('categorias.store');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 
 
 
