@@ -15,6 +15,9 @@ Route::delete('/restaurants/{id}', [RestaurantController::class, 'destroy'])->na
 
 Route::get('/products', [ProductController::class, 'index'])->name('productos.index');
 Route::post('/products', [ProductController::class, 'store'])->name('productos.store');
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('productos.show');
+Route::put('/products/{product}', [ProductController::class, 'update'])->name('productos.update');
+Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('productos.destroy');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');

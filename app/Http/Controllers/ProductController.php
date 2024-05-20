@@ -8,7 +8,7 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    
+  
     public function index()
     {
         $products = Product::all();
@@ -19,13 +19,17 @@ class ProductController extends Controller
         ], Response::HTTP_OK);
     }
 
+  
     public function store(Request $request)
     {
         try {
             $validatedData = $request->validate([
-                'name' => 'required|string',
-                'description' => 'required|string',
+                'name' => 'required|string|max:255',
                 'price' => 'required|numeric',
+                'quantity' => 'required|integer',
+                'image' => 'required|string|max:255',
+                'description' => 'required|string',
+                'seller' => 'required|exists:users,id',
             ]);
 
             $product = Product::create($validatedData);
@@ -41,6 +45,54 @@ class ProductController extends Controller
         }
     }
 
+ 
+    public function show(Product $product)
+    {
+        return response()->json([
+            'message' => 'Producto obtenido exitosamente',
+            'product' => $product,
+        ], Response::HTTP_OK);
+    }
 
 
+    public function update(Request $request, Product $product)
+    {
+        try {
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'price' => 'required|numeric',
+                'quantity' => 'required|integer',
+                'image' => 'required|string|max:255',
+                'description' => 'required|string',
+                'seller' => 'required|exists:users,id',
+            ]);
+
+            $product->update($validatedData);
+
+            return response()->json([
+                'message' => 'Producto actualizado exitosamente',
+                'product' => $product,
+            ], Response::HTTP_OK);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Error al actualizar el producto: ' . $e->getMessage(),
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    public function destroy(Product $product)
+    {
+        try {
+            $product->delete();
+
+            return response()->json([
+                'message' => 'Producto eliminado exitosamente',
+            ], Response::HTTP_OK);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Error al eliminar el producto: ' . $e->getMessage(),
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }
