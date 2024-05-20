@@ -10,18 +10,20 @@ class ProductController extends Controller
 {
   
     public function index(Request $request)
-{
-    if ($request->has('name')) {
-        $products = Product::where('name', 'like', '%' . $request->input('name') . '%')->get();
-    } else {
-        $products = Product::all();
+    {
+        if ($request->filled('name')) {
+            $name = $request->input('name');
+            $products = Product::where('name', 'like', '%' . $name . '%')->get();
+        } else {
+            $products = Product::all();
+        }
+
+        return response()->json([
+            'message' => 'Lista de productos obtenida exitosamente',
+            'products' => $products,
+        ], Response::HTTP_OK);
     }
 
-    return response()->json([
-        'message' => 'Lista de productos obtenida exitosamente',
-        'products' => $products,
-    ], Response::HTTP_OK);
-}
 
   
     public function store(Request $request)
