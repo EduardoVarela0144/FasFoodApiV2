@@ -33,13 +33,14 @@ class UserController extends Controller
             'firstName' => 'required|string',
             'lastName' => 'required|string',
             'middleName' => 'nullable|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string',
-            'registrationNumber' => 'required|string|unique:users,registrationNumber',
-            'profilePicture' => 'nullable|string',
-            'major' => 'nullable|string',
-            'building' => 'nullable|string',
-            'rol' => 'required|string',
+            'phone'=> 'nullable|string',    
+            // 'email' => 'required|email|unique:users,email',
+            // 'password' => 'required|string',
+            // 'registrationNumber' => 'required|string|unique:users,registrationNumber',
+            // 'profilePicture' => 'nullable|string',
+            // 'major' => 'nullable|string',
+            // 'building' => 'nullable|string',
+            // 'rol' => 'required|string',
         ]);
     
         if ($validator->fails()) {
@@ -47,7 +48,7 @@ class UserController extends Controller
         }
     
         $data = $validator->validated();
-        $data['password'] = bcrypt($data['password']);
+        // $data['password'] = bcrypt($data['password']);
     
         $user = User::create($data);
     

@@ -21,13 +21,14 @@ class User extends Authenticatable
         'lastName',
         'middleName',
         'email',
-        'password',
-        'registrationNumber',
-        'accountNumber',
-        'profilePicture',
-        'major',
-        'building',
-        'rol'
+        'phone',
+        // 'password',
+        // 'registrationNumber',
+        // 'accountNumber',
+        // 'profilePicture',
+        // 'major',
+        // 'building',
+        // 'rol'
     ];
 
     /**
